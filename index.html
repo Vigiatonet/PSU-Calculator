@@ -13,7 +13,6 @@
     <title>power supply calculator</title>
   </head>
   <body>
-    <p>test</p>
     <div class="container flex-column">
       <div class="header flex">
         <h1>CHOOSE YOUR COMPONENTS</h1>
@@ -33,7 +32,7 @@
               <p class="p-3">Brand</p>
               <p class="p-3">Socket</p>
               <p class="p-3">Model</p>
-              <select class="select select-small" name="select" id="Brand">
+              <select class="select" name="select" id="Brand">
                 <option value="select">Select Brand</option>
                 <option value="AMD">AMD</option>
                 <option value="Intel">Intel</option>
@@ -145,8 +144,8 @@
           <!--  -->
           <div class="form-all form-motherboard">
             <label for="name" class="component shadow">MOTHERBOARD: </label>
-            <p class="p-3">Form Factor</p>
-            <select class="select select-width" name="select" id="motherboard">
+            <div class="grid-2-2"><p class="p-3">Form Factor</p></div>
+            <select class="select" name="select" id="motherboard">
               <option value="0" selected="">Select a Motherboard</option>
               <option value="">ATX</option>
               <option value="">E-ATX</option>
@@ -309,40 +308,43 @@
             <label for="name" class="component shadow"
               >RANDOM ACCESS MEMORY (RAM):
             </label>
-            <p class="p-3">Memory module</p>
+            <div class="grid-2-2">
+              <p class="p-3">Memory module</p>
+              <p class="p-3">How many</p>
 
-            <select name="select" class="select select-width-num" id="ram">
-              <option value="0" selected="">Select Your Memory</option>
-              <option value="38.4">128GB DDR5</option>
-              <option value="19.2">64GB DDR5</option>
-              <option value="9.6">32GB DDR5</option>
-              <option value="4.8">16GB DDR5</option>
-              <option value="2.4">8GB DDR5</option>
-              <option value="1.2">4GB DDR5</option>
-              <option value="48">128GB DDR4</option>
-              <option value="24">64GB DDR4</option>
-              <option value="12">32GB DDR4</option>
-              <option value="6">16GB DDR4</option>
-              <option value="3">8GB DDR4</option>
-              <option value="1.5">4GB DDR4</option>
-              <option value="6">32GB DDR3</option>
-              <option value="3">8GB DDR3</option>
-              <option value="2">4GB DDR3</option>
-              <option value="1.5">2GB DDR3</option>
-            </select>
-            <label class="form-select">
-              <select name="select-qty" id="number-select">
-                <option value="1" selected="">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+              <select name="select" class="select" id="ram">
+                <option value="0" selected="">Select Your Memory</option>
+                <option value="38.4">128GB DDR5</option>
+                <option value="19.2">64GB DDR5</option>
+                <option value="9.6">32GB DDR5</option>
+                <option value="4.8">16GB DDR5</option>
+                <option value="2.4">8GB DDR5</option>
+                <option value="1.2">4GB DDR5</option>
+                <option value="48">128GB DDR4</option>
+                <option value="24">64GB DDR4</option>
+                <option value="12">32GB DDR4</option>
+                <option value="6">16GB DDR4</option>
+                <option value="3">8GB DDR4</option>
+                <option value="1.5">4GB DDR4</option>
+                <option value="6">32GB DDR3</option>
+                <option value="3">8GB DDR3</option>
+                <option value="2">4GB DDR3</option>
+                <option value="1.5">2GB DDR3</option>
               </select>
-            </label>
-            <br />
+              <label class="form-select">
+                <select name="select-qty" id="number-select">
+                  <option value="1" selected="">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </label>
+              <br />
+            </div>
           </div>
 
           <!--  -->
@@ -352,30 +354,36 @@
             <label for="name" class="component shadow"
               >SOLID STATE DRIVE (SSD):
             </label>
-            <p class="p-3">Storage Size</p>
 
-            <select name="select" class="select select-width-num" id="ssd">
-              <option value="0" selected="">Select a Solid State Drive</option>
-              <option value="0">Not Installed</option>
-              <option value="10">Under 120GB</option>
-              <option value="10">120GB - 256GB</option>
-              <option value="10">256GB - 512 GB</option>
-              <option value="11">512GB - 1TB</option>
-              <option value="11">1TB+</option>
-            </select>
-            <label class="form-select">
-              <select name="select-qty" id="number-select">
-                <option value="1" selected="">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+            <div class="grid-2-2">
+              <p class="p-3">Storage Size</p>
+              <p class="p-3">How many</p>
+
+              <select name="select" class="select" id="ssd">
+                <option value="0" selected="">
+                  Select a Solid State Drive
+                </option>
+                <option value="0">Not Installed</option>
+                <option value="10">Under 120GB</option>
+                <option value="10">120GB - 256GB</option>
+                <option value="10">256GB - 512 GB</option>
+                <option value="11">512GB - 1TB</option>
+                <option value="11">1TB+</option>
               </select>
-            </label>
-            <br />
+              <label class="form-select">
+                <select name="select-qty" id="number-select">
+                  <option value="1" selected="">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </label>
+              <br />
+            </div>
           </div>
 
           <!--  -->
@@ -385,33 +393,33 @@
             <label for="name" class="component shadow"
               >HARD DISK DRIVE (HDD):</label
             >
-            <p class="p-3">RPM & Size</p>
-            <select
-              name="select"
-              class="select select-width-num"
-              id="hard-drive"
-            >
-              <option value="0" selected="">Select a Hard Drive</option>
-              <option value="">Not Installed</option>
-              <option value="">5400RPM 3.5" HDD</option>
-              <option value="">7200RPM 3.5" HDD</option>
-              <option value="">10,000RPM 2.5" HDD</option>
-              <option value="">10,000RPM 3.5" HDD</option>
-              <option value="">15,000RPM 2.5" HDD</option>
-              <option value="">15,000RPM 3.5" HDD</option>
-            </select>
-            <label class="form-select">
-              <select name="select-qty" id="number-select">
-                <option value="1" selected="">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select> </label
-            ><br />
+            <div class="grid-2-2">
+              <p class="p-3">RPM & Size</p>
+              <p class="p-3">How many</p>
+
+              <select name="select" class="select" id="hard-drive">
+                <option value="0" selected="">Select a Hard Drive</option>
+                <option value="">Not Installed</option>
+                <option value="">5400RPM 3.5" HDD</option>
+                <option value="">7200RPM 3.5" HDD</option>
+                <option value="">10,000RPM 2.5" HDD</option>
+                <option value="">10,000RPM 3.5" HDD</option>
+                <option value="">15,000RPM 2.5" HDD</option>
+                <option value="">15,000RPM 3.5" HDD</option>
+              </select>
+              <label class="form-select">
+                <select name="select-qty" id="number-select">
+                  <option value="1" selected="">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select> </label
+              ><br />
+            </div>
           </div>
 
           <!--  -->
@@ -421,34 +429,33 @@
             <label for="name" class="component shadow"
               >OPTICAL DRIVE (CD/DVD/BLU-RAY):
             </label>
-            <p class="p-3">Type</p>
+            <div class="grid-2-2">
+              <p class="p-3">Type</p>
+              <p class="p-3">How many</p>
 
-            <select
-              name="select"
-              class="select select-width-num"
-              id="optical-drive"
-            >
-              <option value="0" selected="">Select an Optical Drive</option>
-              <option value="0">Not Installed</option>
-              <option value="30">Blu-Ray</option>
-              <option value="30">DVD-RW</option>
-              <option value="24">COMBO</option>
-              <option value="16">CD-RW</option>
-              <option value="20">DVD-ROM</option>
-              <option value="15">CD-ROM</option>
-            </select>
-            <label class="form-select ">
-              <select name="select-qty" id="number-select">
-                <option value="1" selected="">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
+              <select name="select" class="select" id="optical-drive">
+                <option value="0" selected="">Select an Optical Drive</option>
+                <option value="0">Not Installed</option>
+                <option value="30">Blu-Ray</option>
+                <option value="30">DVD-RW</option>
+                <option value="24">COMBO</option>
+                <option value="16">CD-RW</option>
+                <option value="20">DVD-ROM</option>
+                <option value="15">CD-ROM</option>
               </select>
-            </label>
+              <label class="form-select">
+                <select name="select-qty" id="number-select">
+                  <option value="1" selected="">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </label>
+            </div>
           </div>
         </form>
       </div>

@@ -52,6 +52,12 @@ body {
 .grid-3-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 0 1rem;
+}
+.grid-2-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 1rem;
 }
 .shadow {
   box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.2);
@@ -60,7 +66,6 @@ body {
 
 .container {
   margin: 10rem auto;
-  gap: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +123,7 @@ button:active {
   color: #fff;
   border-radius: 1000px;
   padding: 0.7rem 1rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 select {
@@ -128,15 +133,11 @@ select {
   line-height: inherit;
   appearance: var(#e21f2f);
   background-color: transparent;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+
   border-radius: 1000px;
   border: 2px solid #e21f2f;
-  width: 49.5%;
-}
-
-.form-cpu select,
-.form-gpu select,
-.form-motherboard select {
   width: 100%;
 }
 
@@ -146,10 +147,11 @@ select:focus {
 }
 
 .p-3 {
+  display: inline;
   font-weight: 600;
   align-items: center;
-  font-size: 1.6rem;
-  padding-left: 2.2rem;
+  font-size: 1.7rem;
+  padding-left: 0.8rem;
   text-align: left;
   margin-bottom: 0.7rem;
 }
@@ -160,12 +162,14 @@ select:focus {
 @media only screen and (max-width: 37em) {
   html {
     font-size: 50%;
-    font-weight: 600;
+  }
+  .form-all {
+    margin-bottom: 4.5rem;
   }
   .container {
-    margin: 5rem auto;
+    margin: 3rem auto;
     display: inline;
-  } /* header */
+  }
   .header {
     margin: 3rem 0;
     display: flex;
@@ -179,22 +183,26 @@ select:focus {
     margin-bottom: 1rem;
   }
   button {
-    padding: 0.7rem;
+    padding: 0.7rem 0;
     width: 100%;
     margin-left: 0;
   }
 
   .component {
     font-size: 1rem;
-    font-weight: 600;
   }
 
-  select,
-  .select-width-num,
-  .select-width {
-    display: inline;
-    padding: 0.5rem;
-    width: 100%;
+  select {
+    padding: 0.4rem;
+  }
+
+  .p-3 {
+    font-size: 0.8rem;
+  }
+
+  .grid-2-2,
+  .grid-3-3 {
+    gap: 0 0.5rem;
   }
 }
 /* Small devices (portrait tablets and large phones, 481px  and up) */
