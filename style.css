@@ -31,6 +31,8 @@ body {
   outline: none;
   border: none;
   text-decoration: none;
+  background-color: #191919;
+  color: #ededed;
 }
 
 /* #e21f2f */
@@ -60,7 +62,8 @@ body {
   gap: 0 1rem;
 }
 .shadow {
-  box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.5),
+    inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 /* container */
 
@@ -91,8 +94,8 @@ button {
   display: inline-block;
   cursor: pointer;
   border: none;
-  color: white;
-  background-color: #e21f2f;
+  color: #e21f2f;
+  background-color: #ededed;
   padding: 0.7rem 2rem;
   text-align: center;
   text-decoration: none;
@@ -106,6 +109,7 @@ button {
 button:hover,
 button:active {
   background-color: #c21c2a;
+  color: #ededed;
   transform: scale(0.95);
 }
 
@@ -115,15 +119,21 @@ button:active {
 }
 
 .component {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
   letter-spacing: 0.1rem;
-  background-color: #e21f2f;
-  color: #fff;
+  background-color: #ededed;
+  color: #e21f2f;
   border-radius: 1000px;
-  padding: 0.7rem 1rem;
+  padding: 1rem 2rem;
   font-weight: 700;
+}
+.img-icon {
+  width: 4rem;
 }
 
 select {
@@ -131,19 +141,26 @@ select {
   font-family: inherit;
   cursor: inherit;
   line-height: inherit;
-  appearance: var(#e21f2f);
+  appearance: #e21f2f;
   background-color: transparent;
   padding: 1rem;
   font-size: 1.5rem;
-
+  color: #ededed;
   border-radius: 1000px;
   border: 2px solid #e21f2f;
   width: 100%;
 }
 
+select option {
+  color: #e21f2f;
+  font-size: 1.8rem;
+  border: 1px solid #191919;
+}
+
 select:active,
 select:focus {
-  border: 2px solid #e21f2f;
+  transition: all 0.3s ease;
+  border: 2px solid #fff;
 }
 
 .p-3 {
@@ -205,6 +222,7 @@ select:focus {
     gap: 0 0.5rem;
   }
 }
+
 /* Small devices (portrait tablets and large phones, 481px  and up) */
 /* ipad */
 @media only screen and (min-width: 32em) {
