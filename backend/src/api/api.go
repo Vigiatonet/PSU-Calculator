@@ -3,6 +3,8 @@ package api
 import (
 	"fmt"
 
+	"github.com/Vigiatonet/PSU-Calculator/src/api/middleware"
+	"github.com/Vigiatonet/PSU-Calculator/src/api/router"
 	"github.com/Vigiatonet/PSU-Calculator/src/config"
 	"github.com/Vigiatonet/PSU-Calculator/src/docs"
 	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
@@ -15,10 +17,11 @@ func InitServer(cfg *config.Config) {
 	var log = logging.NewLogger(cfg)
 
 	r := gin.New()
-	r.Use(gin.Recovery(), gin.Logger()) // TODO: add custom logger
+	r.Use(gin.Recovery()) // TODO: add custom logger
+	r.Use(middleware.Cors(cfg), middleware.CustomLogger(log), middleware.Limiter())
 
 	swaggerInit(cfg, r)
-	registerRoutes(r)
+	registerRoutes(r, cfg)
 
 	err := r.Run(fmt.Sprintf(":%d", cfg.Server.Port))
 	if err != nil {
@@ -27,12 +30,13 @@ func InitServer(cfg *config.Config) {
 	}
 }
 
-func registerRoutes(r *gin.Engine) {
+func registerRoutes(r *gin.Engine, cfg *config.Config) {
 	api := r.Group("/api")
 
 	v1 := api.Group("/v1")
 	{
-		_ = v1
+		users := v1.Group("/users")
+		router.UserRouter(users, cfg)
 	}
 }
 

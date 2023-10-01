@@ -52,16 +52,15 @@ func createRoleIfNotExists(db *gorm.DB, r *models.Role) {
 func createDefaultInfo(db *gorm.DB) {
 	admin := models.Role{Name: "admin"}
 	createRoleIfNotExists(db, &admin)
-	defaultRole := models.Role{Name: "default"}
+	defaultRole := models.Role{Name: constants.DefaultRoleName}
 	createRoleIfNotExists(db, &defaultRole)
 
 	u := models.User{
-		FirstName:   "test",
-		LastName:    sql.NullString{Valid: true, String: "test"},
-		Username:    constants.AdminRoleName,
-		Email:       sql.NullString{Valid: true, String: "test@test.com"},
-		Enable:      true,
-		PhoneNumber: sql.NullString{Valid: true, String: "09112345678"},
+		FirstName: "test",
+		LastName:  sql.NullString{Valid: true, String: "test"},
+		Username:  constants.AdminRoleName,
+		Email:     sql.NullString{Valid: true, String: "test@test.com"},
+		Enable:    true,
 	}
 	hashedPass, _ := bcrypt.GenerateFromPassword([]byte("a123"), bcrypt.MinCost)
 	u.Password = string(hashedPass)
