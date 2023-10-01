@@ -52,6 +52,5 @@ func CloseDB() {
 	err = db.Close()
 	if err != nil {
 		logger.Fatal(err, logging.Postgres, logging.SubCategory(logging.Postgres), "cant close postgresDB", nil)
-
 	}
 }
