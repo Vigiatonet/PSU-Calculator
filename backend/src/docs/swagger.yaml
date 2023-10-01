@@ -1,4 +1,159 @@
+definitions:
+  dto.LoginByUsername:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.RefreshTokenDTO:
+    properties:
+      refreshToken:
+        type: string
+    type: object
+  dto.RegisterByUsername:
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - firstName
+    - password
+    - username
+    type: object
+  dto.TokenDetail:
+    properties:
+      accessToken:
+        type: string
+      accessTokenExpireTime:
+        type: integer
+      refreshToken:
+        type: string
+      refreshTokenExpireTime:
+        type: integer
+    type: object
+  helper.Response:
+    properties:
+      err:
+        type: string
+      result: {}
+      statusCode:
+        $ref: '#/definitions/helper.ResultCode'
+      success:
+        type: boolean
+    type: object
+  helper.ResultCode:
+    enum:
+    - 0
+    - 40001
+    - 40002
+    - 40101
+    - 40301
+    - 40401
+    - 42901
+    - 42902
+    - 50001
+    - 50002
+    type: integer
+    x-enum-varnames:
+    - Success
+    - ValidationError
+    - Error
+    - AuthError
+    - ForbiddenError
+    - NotFoundError
+    - LimiterError
+    - OtpLimiterError
+    - CustomRecovery
+    - InternalError
 info:
   contact: {}
-paths: {}
+paths:
+  /v1/users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login users with username and password
+      parameters:
+      - description: LoginUser
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginByUsername'
+      responses:
+        "201":
+          description: response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: LoginUser
+      tags:
+      - Users
+  /v1/users/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Get a new AccessToken With Refresh token (key rotation is on)
+      parameters:
+      - description: Get a new AccessToken With Refresh token
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RefreshTokenDTO'
+      responses:
+        "201":
+          description: AccessToken response
+          schema:
+            allOf:
+            - $ref: '#/definitions/helper.Response'
+            - properties:
+                result:
+                  $ref: '#/definitions/dto.TokenDetail'
+              type: object
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: RefreshToken
+      tags:
+      - Users
+  /v1/users/register:
+    post:
+      consumes:
+      - application/json
+      description: register users with username and password
+      parameters:
+      - description: RegisterByUsername
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterByUsername'
+      responses:
+        "201":
+          description: response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: RegisterUser
+      tags:
+      - Users
 swagger: "2.0"
