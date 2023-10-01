@@ -93,7 +93,7 @@ services:
     environment:
       POSTGRES_USER: arshia
       POSTGRES_PASSWORD: a123
-      POSTGRES_DB: car_sale2
+      POSTGRES_DB: psu_calc
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
