@@ -5,6 +5,7 @@ import (
 	"github.com/Vigiatonet/PSU-Calculator/src/config"
 	"github.com/Vigiatonet/PSU-Calculator/src/data/cache"
 	"github.com/Vigiatonet/PSU-Calculator/src/data/db"
+	"github.com/Vigiatonet/PSU-Calculator/src/data/db/migrations"
 	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
 )
 
@@ -20,5 +21,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err, logging.Redis, logging.Startup, "cant init redisDB", nil)
 	}
+	migrations.Up_01()
 	api.InitServer(cfg)
 }
