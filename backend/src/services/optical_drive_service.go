@@ -20,7 +20,6 @@ func NewOpticalDriveService(cfg *config.Config) *OpticalDriveService {
 	base := &BaseService[models.OpticalDrive, dto.UpdateOpticalDriveRequest, dto.CreateOpticalDriveRequest, dto.OpticalDriveResponse]{
 		DB:     db,
 		Logger: logger,
-		// Preload: []Preloads{},
 	}
 	return &OpticalDriveService{
 		base: base,

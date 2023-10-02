@@ -28,6 +28,7 @@ func createTables(db *gorm.DB) {
 	tables = addTablesIfNotExists(&models.OpticalDrive{}, db, tables)
 	tables = addTablesIfNotExists(&models.HardDrive{}, db, tables)
 	tables = addTablesIfNotExists(&models.Ram{}, db, tables)
+	tables = addTablesIfNotExists(&models.GpuBrand{}, db, tables)
 	tables = addTablesIfNotExists(&models.Graphic{}, db, tables)
 	tables = addTablesIfNotExists(&models.Motherboard{}, db, tables)
 	tables = addTablesIfNotExists(&models.Cpu{}, db, tables)

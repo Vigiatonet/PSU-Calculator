@@ -44,12 +44,23 @@ func registerRoutes(r *gin.Engine, cfg *config.Config) {
 
 		opticalDrive := v1.Group("/optical-drive", middleware.Authentication(cfg))
 		router.OpticalDriveRouter(opticalDrive, cfg)
+
+		hdd := v1.Group("/hdd", middleware.Authentication(cfg))
+		router.HardDriveRouter(hdd, cfg)
+
+		ram := v1.Group("/ram", middleware.Authentication(cfg))
+		router.RamModelRouter(ram, cfg)
+
+		mb := v1.Group("/motherboard", middleware.Authentication(cfg))
+		router.MotherboardRouter(mb, cfg)
+
+		gpu := v1.Group("/gpu", middleware.Authentication(cfg))
+		router.GraphicRouter(gpu, cfg)
 	}
 }
 
 func registerValidators() {
 	log := logging.NewLogger(config.GetConfig())
-	// TODO: add logger for requests
 	vld, ok := binding.Validator.Engine().(*validator.Validate)
 	if ok {
 		err := vld.RegisterValidation("password", validators.ValidatePassword, true)

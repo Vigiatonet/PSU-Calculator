@@ -23,9 +23,14 @@ type Ram struct {
 
 type Graphic struct {
 	BaseModel
-	Brand            string  `gorm:"unique;not null"`
-	GpuName          string  `gorm:"not null;unique"`
-	PowerConsumption float64 `gorm:"not null"`
+	GpuName          string   `gorm:"not null;unique"`
+	PowerConsumption float64  `gorm:"not null"`
+	GpuBrand         GpuBrand `gorm:"foreignKey:GpuBrandId;constraint:OnDelete:NO ACTION"`
+	GpuBrandId       int
+}
+type GpuBrand struct {
+	BaseModel
+	Name string `gorm:"not null;unique;type:string;size:40"`
 }
 
 type Motherboard struct {
@@ -36,10 +41,16 @@ type Motherboard struct {
 
 type Cpu struct {
 	BaseModel
-	Brand            string  `gorm:"unique;not null"`
+	CpuBrand         CpuBrand `gorm:"foreignKey:CpuBrandId;constraint:OnDelete:NO ACTION"`
+	CpuBrandId       int
 	Socket           string  `gorm:"not null"`
 	Model            string  `gorm:"not null"`
 	PowerConsumption float64 `gorm:"not null"`
+}
+
+type CpuBrand struct {
+	BaseModel
+	Name string `gorm:"not null;unique;type:string;size:40"`
 }
 
 type Ssd struct {

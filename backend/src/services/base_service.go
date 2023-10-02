@@ -19,6 +19,9 @@ import (
 	"gorm.io/gorm"
 )
 
+// FIXME: if these generic functions break there is no way i can debug this. (But is saves time)
+// There is nothing we can do -Napoleon
+
 type Preloads struct {
 	name string
 }
@@ -68,7 +71,7 @@ func (b *BaseService[T, Tu, Tc, Tr]) GetById(ctx context.Context, id int) (*Tr, 
 }
 
 func (b *BaseService[T, Tu, Tc, Tr]) Create(ctx context.Context, req *Tc) (*Tr, error) {
-	db := b.DB.WithContext(ctx).Begin()
+	db := b.DB.WithContext(ctx).Begin() // atomic transaction so we dont have corrupted models in db
 	model, err := common.TypeConverter[T](req)
 	if err != nil {
 		return nil, err
@@ -80,7 +83,7 @@ func (b *BaseService[T, Tu, Tc, Tr]) Create(ctx context.Context, req *Tc) (*Tr, 
 		return nil, err
 	}
 
-	baseModel, err := common.TypeConverter[models.BaseModel](model)
+	baseModel, err := common.TypeConverter[models.BaseModel](model) // convert to base so we get access to Id field
 	if err != nil {
 		db.Rollback()
 		return nil, err
@@ -96,7 +99,7 @@ func (b *BaseService[T, Tu, Tc, Tr]) Update(ctx context.Context, req *Tu, id int
 	}
 	snakeMap := map[string]interface{}{}
 	for k, v := range *updateMap {
-		snakeMap[common.ConvertToSnakeCase(k)] = v
+		snakeMap[common.ConvertToSnakeCase(k)] = v // gorm only accept snake case args like postgres so i have to convert then to snake_case
 	}
 	snakeMap["updated_at"] = &sql.NullTime{Valid: true, Time: time.Now()}
 	snakeMap["updated_by"] = &sql.NullInt64{Valid: true, Int64: int64(ctx.Value(constants.UserIdKey).(float64))}
@@ -134,9 +137,10 @@ func getQuery[T any](filter *dto.DynamicFilter) string {
 	typeT := reflect.TypeOf(*t)
 	query := make([]string, 0)
 	if filter.Filter != nil {
+		fmt.Println(filter.Filter)
 		for name, filter := range filter.Filter {
-			fld, ok := typeT.FieldByName(name)
-			if ok {
+			fld, ok := typeT.FieldByName(strings.Title(name))
+			if ok { // Adding db filters and connect them with an AND in the end
 				fld.Name = common.ConvertToSnakeCase(fld.Name)
 				switch filter.Type {
 				case "contains":
@@ -174,13 +178,16 @@ func getQuery[T any](filter *dto.DynamicFilter) string {
 	}
 	return strings.Join(query, " AND ")
 }
+
+// getSort
 func getSort[T any](filter *dto.DynamicFilter) string {
 	t := new(T)
 	typeT := reflect.TypeOf(*t)
 	sort := make([]string, 0)
 	if filter.Sort != nil {
+		fmt.Println(*filter.Sort)
 		for _, tp := range *filter.Sort {
-			fld, ok := typeT.FieldByName(tp.ColId)
+			fld, ok := typeT.FieldByName(strings.Title(tp.ColId))
 			if ok && (tp.Sort == "asc" || tp.Sort == "desc") {
 				fld.Name = common.ConvertToSnakeCase(fld.Name)
 				sort = append(sort, fmt.Sprintf("%s %s", fld.Name, tp.Sort))
