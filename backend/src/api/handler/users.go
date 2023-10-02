@@ -2,10 +2,13 @@ package handler
 
 import (
 	"net/http"
+	"strings"
+	"time"
 
 	"github.com/Vigiatonet/PSU-Calculator/src/api/dto"
 	"github.com/Vigiatonet/PSU-Calculator/src/api/helper"
 	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/src/constants"
 	"github.com/Vigiatonet/PSU-Calculator/src/services"
 	"github.com/gin-gonic/gin"
 )
@@ -53,7 +56,7 @@ func (uh *UserHandler) RegisterUser(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param Request body dto.LoginByUsername true "LoginUser"
-// @Success 201 {object} helper.Response "response"
+// @Success 200 {object} helper.Response "response"
 // @Failure 400 {object} helper.Response "Bad request"
 // @Router /v1/users/login [post]
 func (uh *UserHandler) LoginUser(ctx *gin.Context) {
@@ -68,7 +71,7 @@ func (uh *UserHandler) LoginUser(ctx *gin.Context) {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, helper.GenerateBaseResponseWithError(nil, helper.NotFoundError, false, err))
 		return
 	}
-	ctx.JSON(http.StatusCreated, helper.GenerateBaseResponse(result, helper.Success, true))
+	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(result, helper.Success, true))
 }
 
 // RefreshToken godoc
@@ -78,7 +81,7 @@ func (uh *UserHandler) LoginUser(ctx *gin.Context) {
 // @Accept json
 // @produces json
 // @Param Request body dto.RefreshTokenDTO true "Get a new AccessToken With Refresh token"
-// @Success 201 {object} helper.Response{result=dto.TokenDetail} "AccessToken response"
+// @Success 200 {object} helper.Response{result=dto.TokenDetail} "AccessToken response"
 // @Failure 400 {object} helper.Response "Bad request"
 // @Router /v1/users/refresh [post]
 func (us *UserHandler) RefreshToken(ctx *gin.Context) {
@@ -96,4 +99,41 @@ func (us *UserHandler) RefreshToken(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(tk, helper.Success, true))
 }
 
-// TODO: add logout after auth middleWare
+// LogoutUser godoc
+// @Summary LogoutUser
+// @Description Get a new logout user and expire JwtToken
+// @Tags Users
+// @Accept json
+// @produces json
+// @Success 418 {object} helper.Response "AccessToken response"
+// @Failure 400 {object} helper.Response "Bad request"
+// @Router /v1/users/logout [post]
+func (uh *UserHandler) LogoutUser(ctx *gin.Context) {
+	tokenHeader := ctx.GetHeader(constants.AuthenTicationHeaderKey)
+	token := strings.Split(tokenHeader, " ")[1]
+	err := services.AddToBlacklist(token, uh.service.Token.Cfg.JWT.AccessTokenExpireDuration*time.Minute)
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, helper.GenerateBaseResponseWithError("field to logout", helper.InternalError, false, err))
+		return
+	}
+	ctx.JSON(http.StatusTeapot, helper.GenerateBaseResponse("loggedOut successfully", helper.Success, true))
+
+}
+
+// ShowUserDetail godoc
+// @Summary ShowUserDetail
+// @Description show user details
+// @Tags Users
+// @Accept json
+// @produces json
+// @Success 200 {object} helper.Response "UserDetail response"
+// @Failure 400 {object} helper.Response "Bad request"
+// @Router /v1/users/profile [post]
+func (uh *UserHandler) ShowUserDetail(ctx *gin.Context) {
+	res, err := uh.service.ShowUser(ctx)
+	if err != nil {
+		ctx.AbortWithStatusJSON(http.StatusUnauthorized, helper.GenerateBaseResponseWithError(nil, helper.ValidationError, false, err))
+		return
+	}
+	ctx.JSON(http.StatusOK, helper.GenerateBaseResponse(res, helper.Success, true))
+}

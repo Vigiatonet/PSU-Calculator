@@ -17,6 +17,7 @@ type Config struct {
 	Otp      OtpConfig
 	JWT      JWTConfig
 	Cors     CorseConfig
+	Password PasswordConf
 }
 type CorseConfig struct {
 	AllowOrigins string
@@ -68,6 +69,14 @@ type LoggerConfig struct {
 	Encoding string
 	Level    string
 	Logger   string
+}
+type PasswordConf struct {
+	IncludeChars     bool
+	IncludeDigits    bool
+	MinLength        int
+	MaxLength        int
+	IncludeUppercase bool
+	IncludeLowercase bool
 }
 
 func configPath(env string) string {

@@ -1,6 +1,6 @@
 package helper
 
-import "github.com/Vigiatonet/PSU-Calculator/src/api/validator"
+import "github.com/Vigiatonet/PSU-Calculator/src/api/validators"
 
 type Response struct {
 	Result     interface{}
@@ -28,7 +28,7 @@ func GenerateBaseResponseWithError(result interface{}, statusCode ResultCode, su
 }
 
 func GenerateBaseResponseWithValidationError(statusCode ResultCode, success bool, err error) *Response {
-	ve := validator.GetValidationError(err)
+	ve := validators.GetValidationError(err)
 	return &Response{
 		Result:     ve,
 		StatusCode: statusCode,

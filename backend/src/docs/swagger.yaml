@@ -92,7 +92,7 @@ paths:
         schema:
           $ref: '#/definitions/dto.LoginByUsername'
       responses:
-        "201":
+        "200":
           description: response
           schema:
             $ref: '#/definitions/helper.Response'
@@ -101,6 +101,40 @@ paths:
           schema:
             $ref: '#/definitions/helper.Response'
       summary: LoginUser
+      tags:
+      - Users
+  /v1/users/logout:
+    post:
+      consumes:
+      - application/json
+      description: Get a new logout user and expire JwtToken
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "418":
+          description: AccessToken response
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: LogoutUser
+      tags:
+      - Users
+  /v1/users/profile:
+    post:
+      consumes:
+      - application/json
+      description: show user details
+      responses:
+        "200":
+          description: UserDetail response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: ShowUserDetail
       tags:
       - Users
   /v1/users/refresh:
@@ -116,7 +150,7 @@ paths:
         schema:
           $ref: '#/definitions/dto.RefreshTokenDTO'
       responses:
-        "201":
+        "200":
           description: AccessToken response
           schema:
             allOf:
