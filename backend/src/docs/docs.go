@@ -16,6 +16,190 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/v1/optical-drive/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Create a OpticalDrive",
+                "parameters": [
+                    {
+                        "description": "Create a OpticalDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateOpticalDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetOpticalDriveById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Get OpticalDrive By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetOpticalDriveById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Update OpticalDrive",
+                "parameters": [
+                    {
+                        "description": " Update OpticalDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateOpticalDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Delete OpticalDrive",
+                "responses": {
+                    "204": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/users/login": {
             "post": {
                 "description": "Login users with username and password",
@@ -193,6 +377,37 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "dto.CreateOpticalDriveRequest": {
+            "type": "object",
+            "properties": {
+                "manufacturer": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.Filter": {
+            "type": "object",
+            "properties": {
+                "filterType": {
+                    "type": "string"
+                },
+                "form": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.LoginByUsername": {
             "type": "object",
             "required": [
@@ -205,6 +420,29 @@ const docTemplate = `{
                 },
                 "username": {
                     "type": "string"
+                }
+            }
+        },
+        "dto.PaginationInputWithFilter": {
+            "type": "object",
+            "properties": {
+                "filter": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/dto.Filter"
+                    }
+                },
+                "page_number": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "type": "integer"
+                },
+                "sort": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.SortDto"
+                    }
                 }
             }
         },
@@ -241,6 +479,17 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.SortDto": {
+            "type": "object",
+            "properties": {
+                "colId": {
+                    "type": "string"
+                },
+                "string": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.TokenDetail": {
             "type": "object",
             "properties": {
@@ -255,6 +504,20 @@ const docTemplate = `{
                 },
                 "refreshTokenExpireTime": {
                     "type": "integer"
+                }
+            }
+        },
+        "dto.UpdateOpticalDriveRequest": {
+            "type": "object",
+            "properties": {
+                "manufacturer": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
                 }
             }
         },

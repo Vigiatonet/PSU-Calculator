@@ -25,6 +25,13 @@ func createTables(db *gorm.DB) {
 	tables = addTablesIfNotExists(&models.User{}, db, tables)
 	tables = addTablesIfNotExists(&models.Role{}, db, tables)
 	tables = addTablesIfNotExists(&models.UserRole{}, db, tables)
+	tables = addTablesIfNotExists(&models.OpticalDrive{}, db, tables)
+	tables = addTablesIfNotExists(&models.HardDrive{}, db, tables)
+	tables = addTablesIfNotExists(&models.Ram{}, db, tables)
+	tables = addTablesIfNotExists(&models.Graphic{}, db, tables)
+	tables = addTablesIfNotExists(&models.Motherboard{}, db, tables)
+	tables = addTablesIfNotExists(&models.Cpu{}, db, tables)
+	tables = addTablesIfNotExists(&models.Ssd{}, db, tables)
 
 	err := db.Migrator().CreateTable(tables...)
 	if err != nil {

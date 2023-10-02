@@ -41,11 +41,15 @@ func registerRoutes(r *gin.Engine, cfg *config.Config) {
 	{
 		users := v1.Group("/users")
 		router.UserRouter(users, cfg)
+
+		opticalDrive := v1.Group("/optical-drive", middleware.Authentication(cfg))
+		router.OpticalDriveRouter(opticalDrive, cfg)
 	}
 }
 
 func registerValidators() {
 	log := logging.NewLogger(config.GetConfig())
+	// TODO: add logger for requests
 	vld, ok := binding.Validator.Engine().(*validator.Validate)
 	if ok {
 		err := vld.RegisterValidation("password", validators.ValidatePassword, true)
