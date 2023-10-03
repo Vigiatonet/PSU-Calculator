@@ -869,6 +869,32 @@ paths:
       summary: Update OpticalDrive
       tags:
       - OpticalDrive
+  /v1/power/calc:
+    post:
+      consumes:
+      - application/json
+      description: Calculate Power
+      parameters:
+      - description: ' Calculate Power'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CalculatePowerRequest'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Calculate Power
+      tags:
+      - power
   /v1/ram/all/:
     post:
       consumes:
@@ -1094,32 +1120,6 @@ paths:
       summary: Get Ssd By Id
       tags:
       - Ssd
-  /v1/ssd/power:
-    post:
-      consumes:
-      - application/json
-      description: Calculate Power
-      parameters:
-      - description: ' Calculate Power'
-        in: body
-        name: Request
-        required: true
-        schema:
-          $ref: '#/definitions/dto.CalculatePowerRequest'
-      responses:
-        "200":
-          description: Ssd response
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "400":
-          description: Bad request
-          schema:
-            $ref: '#/definitions/helper.Response'
-      security:
-      - AuthBearer: []
-      summary: Calculate Power
-      tags:
-      - power
   /v1/ssd/update/{id}:
     put:
       consumes:

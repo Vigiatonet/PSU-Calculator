@@ -30,7 +30,7 @@ func NewPowerHandler(cfg *config.Config) *PowerHandler {
 // @Param Request body dto.CalculatePowerRequest true " Calculate Power"
 // @Success 200 {object} helper.Response "Ssd response"
 // @Failure 400 {object} helper.Response "Bad request"
-// @Router /v1/ssd/power [post]
+// @Router /v1/power/calc [post]
 // @Security AuthBearer
 func (ph *PowerHandler) CalculatePower(ctx *gin.Context) {
 	req := dto.CalculatePowerRequest{}

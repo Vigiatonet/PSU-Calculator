@@ -1018,6 +1018,48 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/power/calc": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Calculate Power",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "power"
+                ],
+                "summary": "Calculate Power",
+                "parameters": [
+                    {
+                        "description": " Calculate Power",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CalculatePowerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/ram/all/": {
             "post": {
                 "security": [
@@ -1370,48 +1412,6 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "GetSsdById response",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Response"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request",
-                        "schema": {
-                            "$ref": "#/definitions/helper.Response"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1/ssd/power": {
-            "post": {
-                "security": [
-                    {
-                        "AuthBearer": []
-                    }
-                ],
-                "description": "Calculate Power",
-                "consumes": [
-                    "application/json"
-                ],
-                "tags": [
-                    "power"
-                ],
-                "summary": "Calculate Power",
-                "parameters": [
-                    {
-                        "description": " Calculate Power",
-                        "name": "Request",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/dto.CalculatePowerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Ssd response",
                         "schema": {
                             "$ref": "#/definitions/helper.Response"
                         }
