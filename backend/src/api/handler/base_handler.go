@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/dto"
-	"github.com/Vigiatonet/PSU-Calculator/src/api/helper"
+	"github.com/Vigiatonet/PSU-Calculator/api/dto"
+	"github.com/Vigiatonet/PSU-Calculator/api/helper"
 	"github.com/gin-gonic/gin"
 )
 

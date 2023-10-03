@@ -3,7 +3,7 @@ package common
 import (
 	"unicode"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/config"
 )
 
 func ValidatePassword(password string) bool {

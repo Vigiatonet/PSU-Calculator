@@ -3,8 +3,8 @@ package common
 import (
 	"regexp"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 )
 
 var EmailRegex = `^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$`

@@ -1,6 +1,6 @@
 package logging
 
-import "github.com/Vigiatonet/PSU-Calculator/src/config"
+import "github.com/Vigiatonet/PSU-Calculator/config"
 
 type Logger interface {
 	Init()

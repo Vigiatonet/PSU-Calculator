@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/constants"
+	"github.com/Vigiatonet/PSU-Calculator/constants"
 	"gorm.io/gorm"
 )
 

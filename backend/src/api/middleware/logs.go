@@ -5,7 +5,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 	"github.com/gin-gonic/gin"
 )
 

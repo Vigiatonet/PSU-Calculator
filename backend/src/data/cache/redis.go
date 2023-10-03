@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/config"
 	"github.com/redis/go-redis/v9"
 )
 

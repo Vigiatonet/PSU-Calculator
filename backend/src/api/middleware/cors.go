@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/config"
 	"github.com/gin-gonic/gin"
 )
 

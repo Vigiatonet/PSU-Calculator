@@ -3,10 +3,10 @@ package handler
 import (
 	"net/http"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/dto"
-	"github.com/Vigiatonet/PSU-Calculator/src/api/helper"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/services"
+	"github.com/Vigiatonet/PSU-Calculator/api/dto"
+	"github.com/Vigiatonet/PSU-Calculator/api/helper"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/services"
 	"github.com/gin-gonic/gin"
 )
 

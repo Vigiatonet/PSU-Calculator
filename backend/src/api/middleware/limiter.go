@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/helper"
+	"github.com/Vigiatonet/PSU-Calculator/api/helper"
 	"github.com/didip/tollbooth"
 	"github.com/gin-gonic/gin"
 )

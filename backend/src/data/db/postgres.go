@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

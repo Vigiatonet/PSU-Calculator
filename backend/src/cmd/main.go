@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/Vigiatonet/PSU-Calculator/src/api"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/data/cache"
-	"github.com/Vigiatonet/PSU-Calculator/src/data/db"
-	"github.com/Vigiatonet/PSU-Calculator/src/data/db/migrations"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/api"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/data/cache"
+	"github.com/Vigiatonet/PSU-Calculator/data/db"
+	"github.com/Vigiatonet/PSU-Calculator/data/db/migrations"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 )
 
 func main() {

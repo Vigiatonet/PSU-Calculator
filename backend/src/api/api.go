@@ -3,12 +3,12 @@ package api
 import (
 	"fmt"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/middleware"
-	"github.com/Vigiatonet/PSU-Calculator/src/api/router"
-	"github.com/Vigiatonet/PSU-Calculator/src/api/validators"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/docs"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/api/middleware"
+	"github.com/Vigiatonet/PSU-Calculator/api/router"
+	"github.com/Vigiatonet/PSU-Calculator/api/validators"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/docs"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
@@ -18,7 +18,7 @@ import (
 
 func InitServer(cfg *config.Config) {
 	var log = logging.NewLogger(cfg)
-
+	gin.SetMode(cfg.Server.RunMode)
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(middleware.Cors(cfg), middleware.CustomLogger(log), middleware.Limiter())
@@ -27,7 +27,7 @@ func InitServer(cfg *config.Config) {
 	registerRoutes(r, cfg)
 	registerValidators()
 
-	err := r.Run(fmt.Sprintf(":%d", cfg.Server.Port))
+	err := r.Run(fmt.Sprintf(":%d", cfg.Server.InternalPort))
 	if err != nil {
 		log.Fatal(err, logging.Internal, logging.Api, "run failed ", nil)
 		return
@@ -92,6 +92,6 @@ func swaggerInit(cfg *config.Config, r *gin.Engine) {
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.Schemes = []string{"http"}
 	docs.SwaggerInfo.BasePath = "/api"
-	docs.SwaggerInfo.Host = fmt.Sprintf("localhost:%d", cfg.Server.Port)
+	docs.SwaggerInfo.Host = fmt.Sprintf("localhost:%d", cfg.Server.ExternalPort)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }

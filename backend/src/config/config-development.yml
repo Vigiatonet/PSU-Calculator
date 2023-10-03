@@ -1,5 +1,6 @@
 Server:
-  Port: 4000
+  internalPort: 4000
+  externalPort: 4000
   runMode: debug
 logger:
   filePath: ../logs/

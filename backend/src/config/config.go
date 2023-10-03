@@ -23,8 +23,9 @@ type CorseConfig struct {
 	AllowOrigins string
 }
 type ServerConfig struct {
-	Port    int
-	RunMode string
+	InternalPort int
+	ExternalPort int
+	RunMode      string
 }
 
 type JWTConfig struct {

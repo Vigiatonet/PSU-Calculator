@@ -1,6 +1,6 @@
 package helper
 
-import "github.com/Vigiatonet/PSU-Calculator/src/api/validators"
+import "github.com/Vigiatonet/PSU-Calculator/api/validators"
 
 type Response struct {
 	Result     interface{}

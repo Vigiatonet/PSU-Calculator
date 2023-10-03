@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/helper"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/constants"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/service_errors"
-	"github.com/Vigiatonet/PSU-Calculator/src/services"
+	"github.com/Vigiatonet/PSU-Calculator/api/helper"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/constants"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/service_errors"
+	"github.com/Vigiatonet/PSU-Calculator/services"
 	"github.com/gin-gonic/gin"
 )
 

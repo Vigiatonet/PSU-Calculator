@@ -1,11 +1,11 @@
 package constants
 
 const (
-	AdminRoleName           string = "admin"
-	DefaultRoleName         string = "default"
-	DefaultUserName         string = "admin"
-	DefaultRedisKey                = "otp"
-	AuthenTicationHeaderKey        = "Authorization"
+	AdminRoleName           = "admin"
+	DefaultRoleName         = "default"
+	DefaultUserName         = "admin"
+	DefaultRedisKey         = "otp"
+	AuthenTicationHeaderKey = "Authorization"
 
 	// claims
 	UserIdKey   = "UserId"

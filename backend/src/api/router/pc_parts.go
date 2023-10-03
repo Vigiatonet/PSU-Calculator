@@ -1,8 +1,8 @@
 package router
 
 import (
-	"github.com/Vigiatonet/PSU-Calculator/src/api/handler"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/api/handler"
+	"github.com/Vigiatonet/PSU-Calculator/config"
 	"github.com/gin-gonic/gin"
 )
 

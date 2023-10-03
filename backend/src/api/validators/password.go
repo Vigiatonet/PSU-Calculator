@@ -1,7 +1,7 @@
 package validators
 
 import (
-	"github.com/Vigiatonet/PSU-Calculator/src/common"
+	"github.com/Vigiatonet/PSU-Calculator/common"
 	"github.com/go-playground/validator/v10"
 )
 

@@ -3,11 +3,11 @@ package services
 import (
 	"context"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/api/dto"
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
-	"github.com/Vigiatonet/PSU-Calculator/src/data/db"
-	"github.com/Vigiatonet/PSU-Calculator/src/data/models"
-	"github.com/Vigiatonet/PSU-Calculator/src/pkg/logging"
+	"github.com/Vigiatonet/PSU-Calculator/api/dto"
+	"github.com/Vigiatonet/PSU-Calculator/config"
+	"github.com/Vigiatonet/PSU-Calculator/data/db"
+	"github.com/Vigiatonet/PSU-Calculator/data/models"
+	"github.com/Vigiatonet/PSU-Calculator/pkg/logging"
 )
 
 type OpticalDriveService struct {

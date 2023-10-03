@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/Vigiatonet/PSU-Calculator/src/config"
+	"github.com/Vigiatonet/PSU-Calculator/config"
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
