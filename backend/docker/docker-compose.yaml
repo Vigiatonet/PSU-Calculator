@@ -74,7 +74,7 @@ services:
     volumes:
       - ./elk/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
       - ../src/logs:/var/log/filebeat/service:ro
-      #- ../prod/logs:/var/log/filebeat/service:ro
+      - ../prod/logs:/var/log/filebeat/service:ro
       - logs:/var/log/filebeat
       - logs:/app:ro
 
@@ -89,11 +89,11 @@ services:
   ####################### POSTGRES #######################
   postgres:
     image: postgres
-    container_name: postgres
+    container_name: postgres_container
     environment:
-      POSTGRES_USER: arshia
-      POSTGRES_PASSWORD: a123
-      POSTGRES_DB: psu_calc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: car_sale_db
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
@@ -107,8 +107,8 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin_container
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: a123
+      PGADMIN_DEFAULT_EMAIL: h.naimaei@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
     volumes:
       - pgadmin:/var/lib/pgadmin
     ports:
@@ -132,6 +132,7 @@ services:
     networks:
       - webapi_network
 
+####################### VOLUME AND NETWORKS #######################
 volumes:
   postgres:
   pgadmin:
