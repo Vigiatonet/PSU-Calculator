@@ -43,3 +43,27 @@ func GraphicRouter(r *gin.RouterGroup, cfg *config.Config) {
 	r.GET("/brand/:brand/", h.GetAllWithBrand)
 	r.POST("/all/", h.GetAllWithPagination)
 }
+
+func CpuRouter(r *gin.RouterGroup, cfg *config.Config) {
+	h := handler.NewCpuHandler(cfg)
+	r.GET("/get/:id", h.GetCpuById)
+	r.PUT("/update/:id", h.UpdateCpu)
+	r.DELETE("/delete/:id", h.DeleteCpu)
+	r.POST("/create", h.CreateCpu)
+	r.GET("/brand/:brand/", h.GetAllByBrand)
+	r.POST("/all/", h.GetAllWithPagination)
+}
+
+func SsdRouter(r *gin.RouterGroup, cfg *config.Config) {
+	h := handler.NewSsdHandler(cfg)
+	r.GET("/get/:id", h.GetSsdById)
+	r.PUT("/update/:id", h.UpdateSsd)
+	r.DELETE("/delete/:id", h.DeleteSsd)
+	r.POST("/create", h.CreateSsd)
+	r.POST("/all/", h.GetAllWithPagination)
+}
+
+func PowerRouter(r *gin.RouterGroup, cfg *config.Config) {
+	h := handler.NewPowerHandler(cfg)
+	r.POST("/calc/", h.CalculatePower)
+}

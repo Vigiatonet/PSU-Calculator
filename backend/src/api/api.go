@@ -56,6 +56,15 @@ func registerRoutes(r *gin.Engine, cfg *config.Config) {
 
 		gpu := v1.Group("/gpu", middleware.Authentication(cfg))
 		router.GraphicRouter(gpu, cfg)
+
+		cpu := v1.Group("/cpu", middleware.Authentication(cfg))
+		router.CpuRouter(cpu, cfg)
+
+		ssd := v1.Group("/ssd", middleware.Authentication(cfg))
+		router.SsdRouter(ssd, cfg)
+
+		pw := v1.Group("/power", middleware.Authentication(cfg))
+		router.PowerRouter(pw, cfg)
 	}
 }
 

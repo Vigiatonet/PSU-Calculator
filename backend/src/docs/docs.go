@@ -16,6 +16,225 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/v1/cpu/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/brand/{brand}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All By Brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get All By Brand",
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Create a Cpu",
+                "parameters": [
+                    {
+                        "description": "Create a Cpu",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateCpuRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Delete Cpu",
+                "responses": {
+                    "204": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetCpuById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get Cpu By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetCpuById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Update Cpu",
+                "parameters": [
+                    {
+                        "description": " Update Cpu",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateCpuRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/graphic/all/": {
             "post": {
                 "security": [
@@ -1018,6 +1237,236 @@ const docTemplate = `{
                 }
             }
         },
+        "/v1/ssd/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Create a Ssd",
+                "parameters": [
+                    {
+                        "description": "Create a Ssd",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateSsdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Delete Ssd",
+                "responses": {
+                    "204": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetSsdById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Get Ssd By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetSsdById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/power": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Calculate Power",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "power"
+                ],
+                "summary": "Calculate Power",
+                "parameters": [
+                    {
+                        "description": " Calculate Power",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CalculatePowerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Update Ssd",
+                "parameters": [
+                    {
+                        "description": " Update Ssd",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateSsdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/users/login": {
             "post": {
                 "description": "Login users with username and password",
@@ -1195,6 +1644,73 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "dto.CalculatePowerRequest": {
+            "type": "object",
+            "required": [
+                "cpuId",
+                "graphicPower",
+                "hardDrivePower",
+                "motherboardPower",
+                "opticalDrivePower",
+                "ramPower",
+                "ssdPower"
+            ],
+            "properties": {
+                "cpuId": {
+                    "type": "number"
+                },
+                "graphicCount": {
+                    "type": "integer"
+                },
+                "graphicPower": {
+                    "type": "number"
+                },
+                "hardDriveCount": {
+                    "type": "integer"
+                },
+                "hardDrivePower": {
+                    "type": "number"
+                },
+                "motherboardPower": {
+                    "type": "number"
+                },
+                "opticalDriveCount": {
+                    "type": "integer"
+                },
+                "opticalDrivePower": {
+                    "type": "number"
+                },
+                "ramCount": {
+                    "type": "integer"
+                },
+                "ramPower": {
+                    "type": "number"
+                },
+                "ssdCount": {
+                    "type": "integer"
+                },
+                "ssdPower": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.CreateCpuRequest": {
+            "type": "object",
+            "properties": {
+                "cpuBrandId": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "socket": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.CreateGraphicRequest": {
             "type": "object",
             "properties": {
@@ -1258,6 +1774,17 @@ const docTemplate = `{
                     "type": "number"
                 },
                 "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateSsdRequest": {
+            "type": "object",
+            "properties": {
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "sizeRange": {
                     "type": "string"
                 }
             }
@@ -1378,6 +1905,17 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.UpdateCpuRequest": {
+            "type": "object",
+            "properties": {
+                "model": {
+                    "type": "string"
+                },
+                "socket": {
+                    "type": "string"
+                }
+            }
+        },
         "dto.UpdateGraphicRequest": {
             "type": "object",
             "properties": {
@@ -1423,6 +1961,14 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateSsdRequest": {
+            "type": "object",
+            "properties": {
+                "sizeRange": {
                     "type": "string"
                 }
             }

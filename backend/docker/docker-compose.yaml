@@ -125,7 +125,7 @@ services:
     container_name: redis_container
     command: ["redis-server", "/etc/redis/redis.conf"]
     volumes:
-      # - ./redis/redis.conf:/etc/redis/redis.conf
+      - ./redis/redis.conf:/etc/redis/redis.conf
       - redis:/etc/redis
     ports:
       - "6379:6379"

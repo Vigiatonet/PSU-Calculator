@@ -1,4 +1,50 @@
 definitions:
+  dto.CalculatePowerRequest:
+    properties:
+      cpuId:
+        type: number
+      graphicCount:
+        type: integer
+      graphicPower:
+        type: number
+      hardDriveCount:
+        type: integer
+      hardDrivePower:
+        type: number
+      motherboardPower:
+        type: number
+      opticalDriveCount:
+        type: integer
+      opticalDrivePower:
+        type: number
+      ramCount:
+        type: integer
+      ramPower:
+        type: number
+      ssdCount:
+        type: integer
+      ssdPower:
+        type: number
+    required:
+    - cpuId
+    - graphicPower
+    - hardDrivePower
+    - motherboardPower
+    - opticalDrivePower
+    - ramPower
+    - ssdPower
+    type: object
+  dto.CreateCpuRequest:
+    properties:
+      cpuBrandId:
+        type: integer
+      model:
+        type: string
+      powerConsumption:
+        type: number
+      socket:
+        type: string
+    type: object
   dto.CreateGraphicRequest:
     properties:
       gpuBrandId:
@@ -40,6 +86,13 @@ definitions:
       powerConsumption:
         type: number
       type:
+        type: string
+    type: object
+  dto.CreateSsdRequest:
+    properties:
+      powerConsumption:
+        type: number
+      sizeRange:
         type: string
     type: object
   dto.Filter:
@@ -118,6 +171,13 @@ definitions:
       refreshTokenExpireTime:
         type: integer
     type: object
+  dto.UpdateCpuRequest:
+    properties:
+      model:
+        type: string
+      socket:
+        type: string
+    type: object
   dto.UpdateGraphicRequest:
     properties:
       gpuName:
@@ -147,6 +207,11 @@ definitions:
       ramSize:
         type: integer
       type:
+        type: string
+    type: object
+  dto.UpdateSsdRequest:
+    properties:
+      sizeRange:
         type: string
     type: object
   helper.Response:
@@ -186,6 +251,141 @@ definitions:
 info:
   contact: {}
 paths:
+  /v1/cpu/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Cpu
+  /v1/cpu/brand/{brand}:
+    get:
+      consumes:
+      - application/json
+      description: Get All By Brand
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All By Brand
+      tags:
+      - Cpu
+  /v1/cpu/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Cpu
+      parameters:
+      - description: Create a Cpu
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCpuRequest'
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Cpu
+      tags:
+      - Cpu
+  /v1/cpu/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Cpu
+      responses:
+        "204":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Cpu
+      tags:
+      - Cpu
+  /v1/cpu/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetCpuById
+      responses:
+        "200":
+          description: GetCpuById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Cpu By Id
+      tags:
+      - Cpu
+  /v1/cpu/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Cpu
+      parameters:
+      - description: ' Update Cpu'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCpuRequest'
+      responses:
+        "200":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Cpu
+      tags:
+      - Cpu
   /v1/graphic/all/:
     post:
       consumes:
@@ -804,6 +1004,148 @@ paths:
       summary: Update RamModel
       tags:
       - RamModel
+  /v1/ssd/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Ssd
+  /v1/ssd/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Ssd
+      parameters:
+      - description: Create a Ssd
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateSsdRequest'
+      responses:
+        "201":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Ssd
+      tags:
+      - Ssd
+  /v1/ssd/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Ssd
+      responses:
+        "204":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Ssd
+      tags:
+      - Ssd
+  /v1/ssd/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetSsdById
+      responses:
+        "200":
+          description: GetSsdById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Ssd By Id
+      tags:
+      - Ssd
+  /v1/ssd/power:
+    post:
+      consumes:
+      - application/json
+      description: Calculate Power
+      parameters:
+      - description: ' Calculate Power'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CalculatePowerRequest'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Calculate Power
+      tags:
+      - power
+  /v1/ssd/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Ssd
+      parameters:
+      - description: ' Update Ssd'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateSsdRequest'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Ssd
+      tags:
+      - Ssd
   /v1/users/login:
     post:
       consumes:

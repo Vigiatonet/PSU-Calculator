@@ -52,7 +52,6 @@ func (o *GraphicService) GetAllByFilter(ctx context.Context, req *dto.Pagination
 	return o.base.GetByFilter(ctx, req)
 }
 
-// FIXME: it is broken
 func (o *GraphicService) GetAllByBrand(brand string) (*[]dto.GraphicResponse, error) {
 	var result *[]dto.GraphicResponse
 	brandName := strings.Title(strings.ToLower(brand))
@@ -67,6 +66,5 @@ func (o *GraphicService) GetAllByBrand(brand string) (*[]dto.GraphicResponse, er
 	if err != nil {
 		return nil, err
 	}
-
 	return result, nil
 }

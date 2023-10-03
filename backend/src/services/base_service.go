@@ -137,7 +137,6 @@ func getQuery[T any](filter *dto.DynamicFilter) string {
 	typeT := reflect.TypeOf(*t)
 	query := make([]string, 0)
 	if filter.Filter != nil {
-		fmt.Println(filter.Filter)
 		for name, filter := range filter.Filter {
 			fld, ok := typeT.FieldByName(strings.Title(name))
 			if ok { // Adding db filters and connect them with an AND in the end
@@ -185,7 +184,6 @@ func getSort[T any](filter *dto.DynamicFilter) string {
 	typeT := reflect.TypeOf(*t)
 	sort := make([]string, 0)
 	if filter.Sort != nil {
-		fmt.Println(*filter.Sort)
 		for _, tp := range *filter.Sort {
 			fld, ok := typeT.FieldByName(strings.Title(tp.ColId))
 			if ok && (tp.Sort == "asc" || tp.Sort == "desc") {
