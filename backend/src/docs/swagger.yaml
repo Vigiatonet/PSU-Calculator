@@ -1,0 +1,1260 @@
+definitions:
+  dto.CalculatePowerRequest:
+    properties:
+      cpuId:
+        type: number
+      graphicCount:
+        type: integer
+      graphicPower:
+        type: number
+      hardDriveCount:
+        type: integer
+      hardDrivePower:
+        type: number
+      motherboardPower:
+        type: number
+      opticalDriveCount:
+        type: integer
+      opticalDrivePower:
+        type: number
+      ramCount:
+        type: integer
+      ramPower:
+        type: number
+      ssdCount:
+        type: integer
+      ssdPower:
+        type: number
+    required:
+    - cpuId
+    - graphicPower
+    - hardDrivePower
+    - motherboardPower
+    - opticalDrivePower
+    - ramPower
+    - ssdPower
+    type: object
+  dto.CreateCpuRequest:
+    properties:
+      cpuBrandId:
+        type: integer
+      model:
+        type: string
+      powerConsumption:
+        type: number
+      socket:
+        type: string
+    type: object
+  dto.CreateGraphicRequest:
+    properties:
+      gpuBrandId:
+        type: integer
+      gpuName:
+        type: string
+      powerConsumption:
+        type: number
+    type: object
+  dto.CreateHardDriveRequest:
+    properties:
+      powerConsumption:
+        type: number
+      rpm:
+        type: integer
+      size:
+        type: number
+    type: object
+  dto.CreateMotherboardRequest:
+    properties:
+      formFactor:
+        type: string
+      powerConsumption:
+        type: number
+    type: object
+  dto.CreateOpticalDriveRequest:
+    properties:
+      manufacturer:
+        type: string
+      powerConsumption:
+        type: number
+      type:
+        type: string
+    type: object
+  dto.CreateRamModelRequest:
+    properties:
+      RamSize:
+        type: integer
+      powerConsumption:
+        type: number
+      type:
+        type: string
+    type: object
+  dto.CreateSsdRequest:
+    properties:
+      powerConsumption:
+        type: number
+      sizeRange:
+        type: string
+    type: object
+  dto.Filter:
+    properties:
+      filterType:
+        type: string
+      form:
+        type: string
+      to:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.LoginByUsername:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.PaginationInputWithFilter:
+    properties:
+      filter:
+        additionalProperties:
+          $ref: '#/definitions/dto.Filter'
+        type: object
+      page_number:
+        type: integer
+      page_size:
+        type: integer
+      sort:
+        items:
+          $ref: '#/definitions/dto.SortDto'
+        type: array
+    type: object
+  dto.RefreshTokenDTO:
+    properties:
+      refreshToken:
+        type: string
+    type: object
+  dto.RegisterByUsername:
+    properties:
+      email:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - firstName
+    - password
+    - username
+    type: object
+  dto.SortDto:
+    properties:
+      colId:
+        type: string
+      string:
+        type: string
+    type: object
+  dto.TokenDetail:
+    properties:
+      accessToken:
+        type: string
+      accessTokenExpireTime:
+        type: integer
+      refreshToken:
+        type: string
+      refreshTokenExpireTime:
+        type: integer
+    type: object
+  dto.UpdateCpuRequest:
+    properties:
+      model:
+        type: string
+      socket:
+        type: string
+    type: object
+  dto.UpdateGraphicRequest:
+    properties:
+      gpuName:
+        type: string
+    type: object
+  dto.UpdateHardDriveRequest:
+    properties:
+      rpm:
+        type: integer
+      size:
+        type: number
+    type: object
+  dto.UpdateMotherboardRequest:
+    properties:
+      formFactor:
+        type: string
+    type: object
+  dto.UpdateOpticalDriveRequest:
+    properties:
+      manufacturer:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.UpdateRamModelRequest:
+    properties:
+      ramSize:
+        type: integer
+      type:
+        type: string
+    type: object
+  dto.UpdateSsdRequest:
+    properties:
+      sizeRange:
+        type: string
+    type: object
+  helper.Response:
+    properties:
+      err:
+        type: string
+      result: {}
+      statusCode:
+        $ref: '#/definitions/helper.ResultCode'
+      success:
+        type: boolean
+    type: object
+  helper.ResultCode:
+    enum:
+    - 0
+    - 40001
+    - 40002
+    - 40101
+    - 40301
+    - 40401
+    - 42901
+    - 42902
+    - 50001
+    - 50002
+    type: integer
+    x-enum-varnames:
+    - Success
+    - ValidationError
+    - Error
+    - AuthError
+    - ForbiddenError
+    - NotFoundError
+    - LimiterError
+    - OtpLimiterError
+    - CustomRecovery
+    - InternalError
+info:
+  contact: {}
+paths:
+  /v1/cpu/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Cpu
+  /v1/cpu/brand/{brand}:
+    get:
+      consumes:
+      - application/json
+      description: Get All By Brand
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All By Brand
+      tags:
+      - Cpu
+  /v1/cpu/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Cpu
+      parameters:
+      - description: Create a Cpu
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCpuRequest'
+      responses:
+        "201":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Cpu
+      tags:
+      - Cpu
+  /v1/cpu/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Cpu
+      responses:
+        "204":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Cpu
+      tags:
+      - Cpu
+  /v1/cpu/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetCpuById
+      responses:
+        "200":
+          description: GetCpuById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Cpu By Id
+      tags:
+      - Cpu
+  /v1/cpu/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Cpu
+      parameters:
+      - description: ' Update Cpu'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCpuRequest'
+      responses:
+        "200":
+          description: Cpu response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Cpu
+      tags:
+      - Cpu
+  /v1/graphic/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: Graphic response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Graphic
+  /v1/graphic/brand/{brand}:
+    get:
+      consumes:
+      - application/json
+      description: Get All With Brand filter
+      responses:
+        "201":
+          description: Graphic response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Brand filter
+      tags:
+      - Graphic
+  /v1/graphic/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Graphic
+      parameters:
+      - description: Create a Graphic
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateGraphicRequest'
+      responses:
+        "201":
+          description: Graphic response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Graphic
+      tags:
+      - Graphic
+  /v1/graphic/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Graphic
+      responses:
+        "204":
+          description: Graphic response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Graphic
+      tags:
+      - Graphic
+  /v1/graphic/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetGraphicById
+      responses:
+        "200":
+          description: GetGraphicById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Graphic By Id
+      tags:
+      - Graphic
+  /v1/graphic/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Graphic
+      parameters:
+      - description: ' Update Graphic'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateGraphicRequest'
+      responses:
+        "200":
+          description: Graphic response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Graphic
+      tags:
+      - Graphic
+  /v1/hdd/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: HardDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - HardDrive
+  /v1/hdd/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a HardDrive
+      parameters:
+      - description: Create a HardDrive
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateHardDriveRequest'
+      responses:
+        "201":
+          description: HardDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a HardDrive
+      tags:
+      - HardDrive
+  /v1/hdd/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete HardDrive
+      responses:
+        "204":
+          description: HardDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete HardDrive
+      tags:
+      - HardDrive
+  /v1/hdd/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetHardDriveById
+      responses:
+        "200":
+          description: GetHardDriveById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get HardDrive By Id
+      tags:
+      - HardDrive
+  /v1/hdd/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update HardDrive
+      parameters:
+      - description: ' Update HardDrive'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateHardDriveRequest'
+      responses:
+        "200":
+          description: HardDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update HardDrive
+      tags:
+      - HardDrive
+  /v1/motherboard/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: Motherboard response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Motherboard
+  /v1/motherboard/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Motherboard
+      parameters:
+      - description: Create a Motherboard
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateMotherboardRequest'
+      responses:
+        "201":
+          description: Motherboard response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Motherboard
+      tags:
+      - Motherboard
+  /v1/motherboard/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Motherboard
+      responses:
+        "204":
+          description: Motherboard response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Motherboard
+      tags:
+      - Motherboard
+  /v1/motherboard/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetMotherboardById
+      responses:
+        "200":
+          description: GetMotherboardById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Motherboard By Id
+      tags:
+      - Motherboard
+  /v1/motherboard/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Motherboard
+      parameters:
+      - description: Update Motherboard
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateMotherboardRequest'
+      responses:
+        "200":
+          description: Motherboard response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Motherboard
+      tags:
+      - Motherboard
+  /v1/optical-drive/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: OpticalDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - OpticalDrive
+  /v1/optical-drive/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a OpticalDrive
+      parameters:
+      - description: Create a OpticalDrive
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateOpticalDriveRequest'
+      responses:
+        "201":
+          description: OpticalDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a OpticalDrive
+      tags:
+      - OpticalDrive
+  /v1/optical-drive/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete OpticalDrive
+      responses:
+        "204":
+          description: OpticalDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete OpticalDrive
+      tags:
+      - OpticalDrive
+  /v1/optical-drive/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetOpticalDriveById
+      responses:
+        "200":
+          description: GetOpticalDriveById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get OpticalDrive By Id
+      tags:
+      - OpticalDrive
+  /v1/optical-drive/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update OpticalDrive
+      parameters:
+      - description: ' Update OpticalDrive'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateOpticalDriveRequest'
+      responses:
+        "200":
+          description: OpticalDrive response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update OpticalDrive
+      tags:
+      - OpticalDrive
+  /v1/power/calc:
+    post:
+      consumes:
+      - application/json
+      description: Calculate Power
+      parameters:
+      - description: ' Calculate Power'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CalculatePowerRequest'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Calculate Power
+      tags:
+      - power
+  /v1/ram/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "201":
+          description: RamModel response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - RamModel
+  /v1/ram/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Ram Model
+      parameters:
+      - description: Create a RamModel
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateRamModelRequest'
+      responses:
+        "201":
+          description: RamModel response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Ram Model
+      tags:
+      - RamModel
+  /v1/ram/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete RamModel from data base
+      responses:
+        "204":
+          description: RamModel response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete RamModel
+      tags:
+      - RamModel
+  /v1/ram/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Ram Model By Id
+      responses:
+        "200":
+          description: GetRamModelById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Ram Model By Id
+      tags:
+      - RamModel
+  /v1/ram/type/{type}:
+    get:
+      consumes:
+      - application/json
+      description: Get All based on ddr4 or ddr5 or ddr3
+      responses:
+        "201":
+          description: RamModel response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All based on ddr4 or ddr5 or ddr3
+      tags:
+      - RamModel
+  /v1/ram/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update RamModel
+      parameters:
+      - description: ' Update RamModel'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateRamModelRequest'
+      responses:
+        "200":
+          description: RamModel response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update RamModel
+      tags:
+      - RamModel
+  /v1/ssd/all/:
+    post:
+      consumes:
+      - application/json
+      description: Get All With Pagination
+      parameters:
+      - description: Get All With Pagination
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaginationInputWithFilter'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get All With Pagination
+      tags:
+      - Ssd
+  /v1/ssd/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a Ssd
+      parameters:
+      - description: Create a Ssd
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateSsdRequest'
+      responses:
+        "201":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Create a Ssd
+      tags:
+      - Ssd
+  /v1/ssd/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Ssd
+      responses:
+        "204":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Delete Ssd
+      tags:
+      - Ssd
+  /v1/ssd/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: GetSsdById
+      responses:
+        "200":
+          description: GetSsdById response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Get Ssd By Id
+      tags:
+      - Ssd
+  /v1/ssd/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Ssd
+      parameters:
+      - description: ' Update Ssd'
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateSsdRequest'
+      responses:
+        "200":
+          description: Ssd response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      security:
+      - AuthBearer: []
+      summary: Update Ssd
+      tags:
+      - Ssd
+  /v1/users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login users with username and password
+      parameters:
+      - description: LoginUser
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginByUsername'
+      responses:
+        "200":
+          description: response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: LoginUser
+      tags:
+      - Users
+  /v1/users/logout:
+    post:
+      consumes:
+      - application/json
+      description: Get a new logout user and expire JwtToken
+      responses:
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "418":
+          description: AccessToken response
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: LogoutUser
+      tags:
+      - Users
+  /v1/users/profile:
+    post:
+      consumes:
+      - application/json
+      description: show user details
+      responses:
+        "200":
+          description: UserDetail response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: ShowUserDetail
+      tags:
+      - Users
+  /v1/users/refresh:
+    post:
+      consumes:
+      - application/json
+      description: Get a new AccessToken With Refresh token (key rotation is on)
+      parameters:
+      - description: Get a new AccessToken With Refresh token
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RefreshTokenDTO'
+      responses:
+        "200":
+          description: AccessToken response
+          schema:
+            allOf:
+            - $ref: '#/definitions/helper.Response'
+            - properties:
+                result:
+                  $ref: '#/definitions/dto.TokenDetail'
+              type: object
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: RefreshToken
+      tags:
+      - Users
+  /v1/users/register:
+    post:
+      consumes:
+      - application/json
+      description: register users with username and password
+      parameters:
+      - description: RegisterByUsername
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterByUsername'
+      responses:
+        "201":
+          description: response
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: RegisterUser
+      tags:
+      - Users
+swagger: "2.0"

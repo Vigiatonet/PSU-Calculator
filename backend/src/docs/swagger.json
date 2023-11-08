@@ -1,0 +1,2007 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/v1/cpu/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/brand/{brand}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All By Brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get All By Brand",
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Create a Cpu",
+                "parameters": [
+                    {
+                        "description": "Create a Cpu",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateCpuRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Delete Cpu",
+                "responses": {
+                    "204": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetCpuById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Get Cpu By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetCpuById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cpu/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Cpu",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cpu"
+                ],
+                "summary": "Update Cpu",
+                "parameters": [
+                    {
+                        "description": " Update Cpu",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateCpuRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cpu response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Graphic response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/brand/{brand}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Brand filter",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Get All With Brand filter",
+                "responses": {
+                    "201": {
+                        "description": "Graphic response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Graphic",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Create a Graphic",
+                "parameters": [
+                    {
+                        "description": "Create a Graphic",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateGraphicRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Graphic response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Graphic",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Delete Graphic",
+                "responses": {
+                    "204": {
+                        "description": "Graphic response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetGraphicById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Get Graphic By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetGraphicById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/graphic/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Graphic",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Graphic"
+                ],
+                "summary": "Update Graphic",
+                "parameters": [
+                    {
+                        "description": " Update Graphic",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateGraphicRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Graphic response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hdd/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HardDrive"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "HardDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hdd/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a HardDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HardDrive"
+                ],
+                "summary": "Create a HardDrive",
+                "parameters": [
+                    {
+                        "description": "Create a HardDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateHardDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "HardDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hdd/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete HardDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HardDrive"
+                ],
+                "summary": "Delete HardDrive",
+                "responses": {
+                    "204": {
+                        "description": "HardDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hdd/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetHardDriveById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HardDrive"
+                ],
+                "summary": "Get HardDrive By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetHardDriveById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hdd/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update HardDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "HardDrive"
+                ],
+                "summary": "Update HardDrive",
+                "parameters": [
+                    {
+                        "description": " Update HardDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateHardDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "HardDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/motherboard/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Motherboard"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Motherboard response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/motherboard/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Motherboard",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Motherboard"
+                ],
+                "summary": "Create a Motherboard",
+                "parameters": [
+                    {
+                        "description": "Create a Motherboard",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateMotherboardRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Motherboard response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/motherboard/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Motherboard",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Motherboard"
+                ],
+                "summary": "Delete Motherboard",
+                "responses": {
+                    "204": {
+                        "description": "Motherboard response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/motherboard/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetMotherboardById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Motherboard"
+                ],
+                "summary": "Get Motherboard By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetMotherboardById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/motherboard/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Motherboard",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Motherboard"
+                ],
+                "summary": "Update Motherboard",
+                "parameters": [
+                    {
+                        "description": "Update Motherboard",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateMotherboardRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Motherboard response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Create a OpticalDrive",
+                "parameters": [
+                    {
+                        "description": "Create a OpticalDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateOpticalDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Delete OpticalDrive",
+                "responses": {
+                    "204": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetOpticalDriveById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Get OpticalDrive By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetOpticalDriveById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/optical-drive/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update OpticalDrive",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OpticalDrive"
+                ],
+                "summary": "Update OpticalDrive",
+                "parameters": [
+                    {
+                        "description": " Update OpticalDrive",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateOpticalDriveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OpticalDrive response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/power/calc": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Calculate Power",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "power"
+                ],
+                "summary": "Calculate Power",
+                "parameters": [
+                    {
+                        "description": " Calculate Power",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CalculatePowerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "RamModel response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Ram Model",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Create a Ram Model",
+                "parameters": [
+                    {
+                        "description": "Create a RamModel",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateRamModelRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "RamModel response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete RamModel from data base",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Delete RamModel",
+                "responses": {
+                    "204": {
+                        "description": "RamModel response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get Ram Model By Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Get Ram Model By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetRamModelById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/type/{type}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All based on ddr4 or ddr5 or ddr3",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Get All based on ddr4 or ddr5 or ddr3",
+                "responses": {
+                    "201": {
+                        "description": "RamModel response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ram/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update RamModel",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "RamModel"
+                ],
+                "summary": "Update RamModel",
+                "parameters": [
+                    {
+                        "description": " Update RamModel",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateRamModelRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "RamModel response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/all/": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Get All With Pagination",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Get All With Pagination",
+                "parameters": [
+                    {
+                        "description": "Get All With Pagination",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PaginationInputWithFilter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/create": {
+            "post": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Create a Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Create a Ssd",
+                "parameters": [
+                    {
+                        "description": "Create a Ssd",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.CreateSsdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Delete Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Delete Ssd",
+                "responses": {
+                    "204": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "GetSsdById",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Get Ssd By Id",
+                "responses": {
+                    "200": {
+                        "description": "GetSsdById response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/ssd/update/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "AuthBearer": []
+                    }
+                ],
+                "description": "Update Ssd",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Ssd"
+                ],
+                "summary": "Update Ssd",
+                "parameters": [
+                    {
+                        "description": " Update Ssd",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.UpdateSsdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ssd response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/login": {
+            "post": {
+                "description": "Login users with username and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "LoginUser",
+                "parameters": [
+                    {
+                        "description": "LoginUser",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.LoginByUsername"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/logout": {
+            "post": {
+                "description": "Get a new logout user and expire JwtToken",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "LogoutUser",
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "418": {
+                        "description": "AccessToken response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/profile": {
+            "post": {
+                "description": "show user details",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "ShowUserDetail",
+                "responses": {
+                    "200": {
+                        "description": "UserDetail response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/refresh": {
+            "post": {
+                "description": "Get a new AccessToken With Refresh token (key rotation is on)",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "RefreshToken",
+                "parameters": [
+                    {
+                        "description": "Get a new AccessToken With Refresh token",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RefreshTokenDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AccessToken response",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/helper.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "result": {
+                                            "$ref": "#/definitions/dto.TokenDetail"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users/register": {
+            "post": {
+                "description": "register users with username and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "RegisterUser",
+                "parameters": [
+                    {
+                        "description": "RegisterByUsername",
+                        "name": "Request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RegisterByUsername"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.CalculatePowerRequest": {
+            "type": "object",
+            "required": [
+                "cpuId",
+                "graphicPower",
+                "hardDrivePower",
+                "motherboardPower",
+                "opticalDrivePower",
+                "ramPower",
+                "ssdPower"
+            ],
+            "properties": {
+                "cpuId": {
+                    "type": "number"
+                },
+                "graphicCount": {
+                    "type": "integer"
+                },
+                "graphicPower": {
+                    "type": "number"
+                },
+                "hardDriveCount": {
+                    "type": "integer"
+                },
+                "hardDrivePower": {
+                    "type": "number"
+                },
+                "motherboardPower": {
+                    "type": "number"
+                },
+                "opticalDriveCount": {
+                    "type": "integer"
+                },
+                "opticalDrivePower": {
+                    "type": "number"
+                },
+                "ramCount": {
+                    "type": "integer"
+                },
+                "ramPower": {
+                    "type": "number"
+                },
+                "ssdCount": {
+                    "type": "integer"
+                },
+                "ssdPower": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.CreateCpuRequest": {
+            "type": "object",
+            "properties": {
+                "cpuBrandId": {
+                    "type": "integer"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "socket": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateGraphicRequest": {
+            "type": "object",
+            "properties": {
+                "gpuBrandId": {
+                    "type": "integer"
+                },
+                "gpuName": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.CreateHardDriveRequest": {
+            "type": "object",
+            "properties": {
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "rpm": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.CreateMotherboardRequest": {
+            "type": "object",
+            "properties": {
+                "formFactor": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.CreateOpticalDriveRequest": {
+            "type": "object",
+            "properties": {
+                "manufacturer": {
+                    "type": "string"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateRamModelRequest": {
+            "type": "object",
+            "properties": {
+                "RamSize": {
+                    "type": "integer"
+                },
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.CreateSsdRequest": {
+            "type": "object",
+            "properties": {
+                "powerConsumption": {
+                    "type": "number"
+                },
+                "sizeRange": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.Filter": {
+            "type": "object",
+            "properties": {
+                "filterType": {
+                    "type": "string"
+                },
+                "form": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.LoginByUsername": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PaginationInputWithFilter": {
+            "type": "object",
+            "properties": {
+                "filter": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/definitions/dto.Filter"
+                    }
+                },
+                "page_number": {
+                    "type": "integer"
+                },
+                "page_size": {
+                    "type": "integer"
+                },
+                "sort": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.SortDto"
+                    }
+                }
+            }
+        },
+        "dto.RefreshTokenDTO": {
+            "type": "object",
+            "properties": {
+                "refreshToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RegisterByUsername": {
+            "type": "object",
+            "required": [
+                "firstName",
+                "password",
+                "username"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.SortDto": {
+            "type": "object",
+            "properties": {
+                "colId": {
+                    "type": "string"
+                },
+                "string": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.TokenDetail": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "accessTokenExpireTime": {
+                    "type": "integer"
+                },
+                "refreshToken": {
+                    "type": "string"
+                },
+                "refreshTokenExpireTime": {
+                    "type": "integer"
+                }
+            }
+        },
+        "dto.UpdateCpuRequest": {
+            "type": "object",
+            "properties": {
+                "model": {
+                    "type": "string"
+                },
+                "socket": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateGraphicRequest": {
+            "type": "object",
+            "properties": {
+                "gpuName": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateHardDriveRequest": {
+            "type": "object",
+            "properties": {
+                "rpm": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "number"
+                }
+            }
+        },
+        "dto.UpdateMotherboardRequest": {
+            "type": "object",
+            "properties": {
+                "formFactor": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateOpticalDriveRequest": {
+            "type": "object",
+            "properties": {
+                "manufacturer": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateRamModelRequest": {
+            "type": "object",
+            "properties": {
+                "ramSize": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.UpdateSsdRequest": {
+            "type": "object",
+            "properties": {
+                "sizeRange": {
+                    "type": "string"
+                }
+            }
+        },
+        "helper.Response": {
+            "type": "object",
+            "properties": {
+                "err": {
+                    "type": "string"
+                },
+                "result": {},
+                "statusCode": {
+                    "$ref": "#/definitions/helper.ResultCode"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "helper.ResultCode": {
+            "type": "integer",
+            "enum": [
+                0,
+                40001,
+                40002,
+                40101,
+                40301,
+                40401,
+                42901,
+                42902,
+                50001,
+                50002
+            ],
+            "x-enum-varnames": [
+                "Success",
+                "ValidationError",
+                "Error",
+                "AuthError",
+                "ForbiddenError",
+                "NotFoundError",
+                "LimiterError",
+                "OtpLimiterError",
+                "CustomRecovery",
+                "InternalError"
+            ]
+        }
+    }
+}
